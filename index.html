@@ -1,432 +1,320 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduarda Tavares - Nutrição Moderna</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eduarda Tavares - Agende sua Consulta</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Lucide Icons -->
-    <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/umd/lucide.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet" />
 
-    <style>
-        /* Custom styles to apply the specified font families */
-        body {
-            font-family: 'Nunito Sans', sans-serif;
-            background-color: #120C18; /* Roxo bem escuro */
-            color: #EAE6F0;
-        }
-        h1, h2, h3, h4, h5, h6, .font-poppins {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        /* Paleta de cores "Dark Synthwave" - Roxo, Lilás, Rosa */
-        .bg-dark-bg { background-color: #120C18; }
-        .bg-dark-card { background-color: #1C1429; }
-        .border-dark-border { border-color: #3D325C; }
-        
-        .text-lilac { color: #C998FF; }
-        .bg-lilac { background-color: #C998FF; }
+  <!-- Lucide Icons -->
+  <script defer src="https://cdn.jsdelivr.net/npm/lucide-static@latest/umd/lucide.js"></script>
 
-        .text-hot-pink { color: #FF5D9E; }
-        .bg-hot-pink { background-color: #FF5D9E; }
-        .hover\:bg-hot-pink-dark:hover { background-color: #F83C8A; }
-        .shadow-hot-pink { box-shadow: 0 0 20px rgba(255, 93, 158, 0.4); }
+  <style>
+    /* Fonts & Base */
+    body {
+      font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+      background-color: #120C18;
+      color: #EAE6F0;
+    }
+    h1, h2, h3, h4, h5, h6, .font-poppins { font-family: 'Poppins', sans-serif; }
 
-        .text-deep-purple { color: #3D325C; }
+    /* Palette */
+    .bg-dark-bg { background-color: #120C18; }
+    .bg-dark-card { background-color: #1C1429; }
+    .border-dark-border { border-color: #3D325C; }
+    .text-lilac { color: #C998FF; }
+    .bg-lilac { background-color: #C998FF; }
+    .text-hot-pink { color: #FF5D9E; }
+    .bg-hot-pink { background-color: #FF5D9E; }
+    .hover\:bg-hot-pink-dark:hover { background-color: #F83C8A; }
+    .shadow-hot-pink { box-shadow: 0 0 20px rgba(255, 93, 158, 0.4); }
 
-        /* Efeito de Gradiente Animado para o Hero */
-        .animated-gradient-hero {
-            background: linear-gradient(-45deg, #120C18, #3D325C, #FF5D9E, #1C1429);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            position: relative;
-            overflow: hidden;
-        }
+    /* Hero gradient */
+    .animated-gradient-hero {
+      background: radial-gradient(1200px 600px at 50% -20%, rgba(255,93,158,.25), rgba(201,152,255,.12), rgba(18,12,24,0) 60%),
+                  linear-gradient(-45deg, #120C18, #3D325C, #FF5D9E, #1C1429);
+      background-size: 400% 400%;
+      animation: gradient 18s ease infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    /* Subtle card glow */
+    .glow-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(255,93,158,.12), 0 0 20px rgba(255, 93, 158, .18);
+      transition: all .3s ease;
+    }
 
-        /* Efeitos de Fade-in */
-        .fade-in-element {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-element.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Efeito de hover com brilho rosa */
-        .glow-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(255, 93, 158, 0.1), 0 0 20px rgba(255, 93, 158, 0.2);
-            transition: all 0.3s ease;
-        }
-    </style>
+    /* Fade-in */
+    .fade-in-element { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in-element.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* Pretty gradient text */
+    .gradient-text { background: linear-gradient(90deg, #FF5D9E, #C998FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  </style>
 </head>
 <body class="bg-dark-bg">
-
-    <!-- ===== Header ===== -->
-    <header id="header" class="bg-dark-bg/80 backdrop-blur-lg border-b border-dark-border/50 fixed w-full z-50 top-0 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white font-poppins">Eduarda Tavares</a>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#sobre" class="text-gray-300 hover:text-hot-pink transition">Sobre</a>
-                <a href="#servicos" class="text-gray-300 hover:text-hot-pink transition">Serviços</a>
-                <a href="#feedback" class="text-gray-300 hover:text-hot-pink transition">Feedback</a>
-                <a href="#contato" class="text-gray-300 hover:text-hot-pink transition">Contato</a>
-            </nav>
-            <a href="#contato" class="hidden md:block bg-hot-pink text-white font-semibold py-2 px-6 rounded-full hover:bg-hot-pink-dark transition-all duration-300 shadow-hot-pink">
-                Agendar consulta
-            </a>
-            <button id="mobile-menu-button" class="md:hidden text-white">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-t border-dark-border">
-            <a href="#sobre" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Sobre</a>
-            <a href="#servicos" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Serviços</a>
-            <a href="#feedback" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Feedback</a>
-            <a href="#contato" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Contato</a>
-            <div class="p-4">
-                <a href="#contato" class="w-full text-center block bg-hot-pink text-white font-semibold py-3 px-6 rounded-full hover:bg-hot-pink-dark transition-all duration-300">
-                    Agendar consulta
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- ===== Hero Section ===== -->
-        <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 text-center animated-gradient-hero">
-            <div class="relative container mx-auto px-6 z-10">
-                <h1 class="text-4xl md:text-6xl font-semibold text-white leading-tight mb-4">Emagrecer sem passar fome é possível</h1>
-                <p class="text-2xl md:text-3xl text-hot-pink mb-8 font-poppins">e eu vou te mostrar como.</p>
-                <p class="text-gray-300 text-lg mb-12 max-w-2xl mx-auto">Atendimento online e presencial para transformar sua relação com a comida de forma leve e gentil.</p>
-                <div class="flex flex-col md:flex-row justify-center items-center gap-4">
-                    <a href="#contato" class="w-full md:w-auto bg-hot-pink text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-hot-pink-dark transition-transform hover:scale-105 duration-300 shadow-lg shadow-hot-pink">Agendar consulta</a>
-                    <a href="#" id="open-popup-btn" class="w-full md:w-auto bg-dark-card text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-dark-border transition-transform hover:scale-105 duration-300 shadow-lg">Baixe seu guia gratuito</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Sobre Section ===== -->
-        <section id="sobre" class="py-20 md:py-28 fade-in-element">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-                    <div class="md:w-1/2">
-                        <img src="https://placehold.co/600x700/1C1429/FF5D9E?text=Eduarda+Tavares" alt="Foto profissional de Eduarda Tavares" class="rounded-2xl w-full object-cover border-4 border-dark-border">
-                    </div>
-                    <div class="md:w-1/2 text-center md:text-left">
-                        <h2 class="text-3xl md:text-4xl font-semibold text-white mb-6">Prazer, sou a <span class="text-lilac">Eduarda</span>.</h2>
-                        <p class="text-lg text-gray-300 mb-4 leading-relaxed">Acredito que nutrição é sobre autocuidado, não sofrimento. Minha missão é te ajudar a encontrar o equilíbrio, resgatar o prazer de comer e alcançar seus objetivos de forma leve e sustentável.</p>
-                        <p class="text-lg text-gray-300 mb-8 leading-relaxed">Chega de dietas malucas e culpa. Vamos juntas construir um caminho de saúde que respeita seu corpo, seus gostos e sua rotina.</p>
-                        <div class="bg-dark-card p-6 rounded-xl border border-dark-border">
-                            <h4 class="font-semibold text-lg text-lilac mb-3">Qualificações</h4>
-                            <p class="text-gray-400 mb-1"><i data-lucide="award" class="inline-block w-5 h-5 mr-2 text-hot-pink"></i>Nutricionista - CRN-XX 12345</p>
-                            <p class="text-gray-400 mb-1"><i data-lucide="award" class="inline-block w-5 h-5 mr-2 text-hot-pink"></i>Pós-graduada em Nutrição Clínica e Funcional</p>
-                            <p class="text-gray-400"><i data-lucide="award" class="inline-block w-5 h-5 mr-2 text-hot-pink"></i>Especialista em Saúde Intestinal</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Filosofia Section ===== -->
-        <section class="bg-dark-card py-20 md:py-24 fade-in-element">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-semibold text-white mb-4">Minha filosofia de trabalho</h2>
-                <p class="max-w-3xl mx-auto text-lg text-gray-400 mb-12">Aqui não tem cardápio engessado ou comida proibida. Vamos trabalhar com:</p>
-                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <div class="p-8">
-                        <i data-lucide="smile-plus" class="w-12 h-12 mx-auto mb-4 text-hot-pink"></i>
-                        <h3 class="text-xl font-semibold text-white mb-2 font-poppins">Seus gostos pessoais</h3>
-                        <p class="text-gray-400">Sim, dá pra emagrecer comendo pão, chocolate e o que mais você amar!</p>
-                    </div>
-                    <div class="p-8">
-                        <i data-lucide="clock" class="w-12 h-12 mx-auto mb-4 text-hot-pink"></i>
-                        <h3 class="text-xl font-semibold text-white mb-2 font-poppins">Sua rotina real</h3>
-                        <p class="text-gray-400">Planos práticos, sem receitas mirabolantes ou ingredientes caros.</p>
-                    </div>
-                    <div class="p-8">
-                        <i data-lucide="flask-conical" class="w-12 h-12 mx-auto mb-4 text-hot-pink"></i>
-                        <h3 class="text-xl font-semibold text-white mb-2 font-poppins">Ciência sem frescura</h3>
-                        <p class="text-gray-400">Minhas orientações são baseadas em evidências, não em modismos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Serviços Section ===== -->
-        <section id="servicos" class="py-20 md:py-28 fade-in-element">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-semibold text-white">Como posso te ajudar</h2>
-                    <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Soluções personalizadas para você alcançar seus objetivos de saúde.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-dark-card p-8 rounded-2xl text-center border border-dark-border glow-hover">
-                        <i data-lucide="user-check" class="w-12 h-12 mx-auto mb-6 text-lilac"></i>
-                        <h3 class="text-2xl font-semibold text-white mb-4">Consultas Individuais</h3>
-                        <p class="text-gray-400 mb-6">Atendimento personalizado para emagrecimento, reeducação alimentar e saúde da mulher 30+.</p>
-                        <a href="#contato" class="font-semibold text-lilac hover:text-hot-pink">Saiba mais <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
-                    </div>
-                    <div class="bg-dark-card p-8 rounded-2xl text-center border border-dark-border glow-hover">
-                        <i data-lucide="sparkles" class="w-12 h-12 mx-auto mb-6 text-lilac"></i>
-                        <h3 class="text-2xl font-semibold text-white mb-4">Programa Intestino Saudável</h3>
-                        <p class="text-gray-400 mb-6">Um guia de 8 semanas para regular seu intestino, diminuir o inchaço e aumentar sua disposição.</p>
-                        <a href="#contato" class="font-semibold text-lilac hover:text-hot-pink">Quero participar <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
-                    </div>
-                    <div class="bg-dark-card p-8 rounded-2xl text-center border border-dark-border glow-hover">
-                        <i data-lucide="presentation" class="w-12 h-12 mx-auto mb-6 text-lilac"></i>
-                        <h3 class="text-2xl font-semibold text-white mb-4">Palestras para Empresas</h3>
-                        <p class="text-gray-400 mb-6">Temas como "Lanches Saudáveis no Home Office" e "Nutrição para Produtividade".</p>
-                        <a href="#contato" class="font-semibold text-lilac hover:text-hot-pink">Leve para sua empresa <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Feedback Section ===== -->
-        <section id="feedback" class="py-20 md:py-28 bg-dark-card fade-in-element">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-semibold text-white">O que minhas pacientes dizem</h2>
-                    <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Resultados reais de mulheres que transformaram sua relação com a comida.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-dark-bg p-8 rounded-2xl border border-dark-border">
-                        <div class="flex text-yellow-400 mb-4">
-                            <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
-                        </div>
-                        <p class="text-gray-300 mb-4 italic">"Perdi 8kg sem deixar de comer meu chocolate todo dia! A Eduarda me mostrou como equilibrar tudo de um jeito que eu nunca imaginei ser possível."</p>
-                        <p class="font-semibold text-lilac">- Ana, 35 anos</p>
-                    </div>
-                     <div class="bg-dark-bg p-8 rounded-2xl border border-dark-border">
-                        <div class="flex text-yellow-400 mb-4">
-                            <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
-                        </div>
-                        <p class="text-gray-300 mb-4 italic">"Finalmente entendi que não preciso sofrer para ser saudável. As consultas são uma terapia! Recomendo de olhos fechados."</p>
-                        <p class="font-semibold text-lilac">- Mariana, 42 anos</p>
-                    </div>
-                     <div class="bg-dark-bg p-8 rounded-2xl border border-dark-border">
-                        <div class="flex text-yellow-400 mb-4">
-                            <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
-                        </div>
-                        <p class="text-gray-300 mb-4 italic">"O programa de saúde intestinal mudou minha vida. Acabou o inchaço e ganhei uma energia que não sentia há anos. Só gratidão!"</p>
-                        <p class="font-semibold text-lilac">- Carla, 31 anos</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Contato Section ===== -->
-        <section id="contato" class="py-20 md:py-28 fade-in-element">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-semibold text-white">Vamos conversar?</h2>
-                    <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Envie uma mensagem para agendar sua consulta ou tirar dúvidas. Estou aqui para te ajudar!</p>
-                </div>
-                <div class="flex flex-col md:flex-row gap-12">
-                    <!-- Formulário -->
-                    <div class="md:w-1/2 bg-dark-card p-8 rounded-2xl shadow-lg border border-dark-border">
-                        <form>
-                            <div class="mb-5">
-                                <label for="name" class="block mb-2 font-semibold text-gray-300">Nome</label>
-                                <input type="text" id="name" class="w-full p-3 rounded-lg bg-dark-bg border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" placeholder="Seu nome completo">
-                            </div>
-                            <div class="mb-5">
-                                <label for="email" class="block mb-2 font-semibold text-gray-300">Email</label>
-                                <input type="email" id="email" class="w-full p-3 rounded-lg bg-dark-bg border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" placeholder="seu.email@exemplo.com">
-                            </div>
-                            <div class="mb-5">
-                                <label for="message" class="block mb-2 font-semibold text-gray-300">Mensagem</label>
-                                <textarea id="message" rows="5" class="w-full p-3 rounded-lg bg-dark-bg border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" placeholder="Como posso te ajudar?"></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-hot-pink text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-hot-pink-dark transition-all duration-300 shadow-lg shadow-hot-pink">Enviar Mensagem</button>
-                        </form>
-                    </div>
-                    <!-- Informações de Contato -->
-                    <div class="md:w-1/2">
-                        <div class="mb-8">
-                            <h3 class="text-2xl font-semibold text-white mb-4">Contato Direto</h3>
-                            <a href="https://wa.me/5511999999999" target="_blank" class="flex items-center bg-green-500 text-white p-4 rounded-lg text-lg font-bold hover:bg-green-600 transition-all">
-                                <i data-lucide="message-circle" class="w-8 h-8 mr-4"></i>
-                                <span>Chamar no WhatsApp</span>
-                            </a>
-                        </div>
-                        <div class="mb-8">
-                             <h3 class="text-2xl font-semibold text-white mb-4">Consultório</h3>
-                             <div class="flex items-start">
-                                <i data-lucide="map-pin" class="w-6 h-6 mr-3 text-lilac mt-1"></i>
-                                <div>
-                                    <p class="text-gray-300">Av. Paulista, 1234 - Sala 56</p>
-                                    <p class="text-gray-300">Bela Vista, São Paulo - SP</p>
-                                    <a href="#" class="text-lilac font-semibold hover:underline">Ver no mapa</a>
-                                </div>
-                             </div>
-                        </div>
-                         <div>
-                             <h3 class="text-2xl font-semibold text-white mb-4">Perguntas Frequentes</h3>
-                             <div class="space-y-3">
-                                <details class="p-4 rounded-lg bg-dark-bg border border-dark-border">
-                                    <summary class="font-semibold cursor-pointer text-gray-300">Como funcionam as consultas online?</summary>
-                                    <p class="mt-3 text-gray-400">Realizamos a consulta por videochamada, com a mesma qualidade e atenção do presencial. Você recebe todos os materiais por e-mail e tem suporte via WhatsApp.</p>
-                                </details>
-                                <details class="p-4 rounded-lg bg-dark-bg border border-dark-border">
-                                    <summary class="font-semibold cursor-pointer text-gray-300">Preciso cortar o que eu gosto de comer?</summary>
-                                    <p class="mt-3 text-gray-400">De forma alguma! A ideia é aprender a incluir tudo com equilíbrio. A nutrição sem neuras não trabalha com restrições, mas sim com inclusão e inteligência alimentar.</p>
-                                </details>
-                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ===== Footer ===== -->
-    <footer class="bg-dark-bg text-white border-t border-dark-border">
-        <div class="container mx-auto px-6 py-10 text-center">
-            <p class="font-semibold text-lg mb-4">Eduarda Tavares Nutrição</p>
-            <div class="flex justify-center space-x-6 mb-6">
-                <a href="#" class="text-gray-400 hover:text-hot-pink transition"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                <a href="#" class="text-gray-400 hover:text-hot-pink transition"><i data-lucide="facebook" class="w-6 h-6"></i></a>
-                <a href="#" class="text-gray-400 hover:text-hot-pink transition"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-            </div>
-            <p class="text-sm text-gray-500">&copy; 2024 Eduarda Tavares. Todos os direitos reservados.</p>
-            <p class="text-sm text-gray-500 mt-2">Certificado pelo CRN-XX</p>
-        </div>
-    </footer>
-
-    <!-- ===== Popup Modal for E-book ===== -->
-    <div id="popup-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-        <div class="bg-dark-card border border-dark-border rounded-2xl shadow-2xl w-full max-w-md relative p-8 md:p-10 text-center transform scale-95 transition-transform duration-300">
-            <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-                <i data-lucide="x" class="w-8 h-8"></i>
-            </button>
-            <i data-lucide="gift" class="w-16 h-16 mx-auto mb-4 text-hot-pink"></i>
-            <h3 class="text-2xl font-semibold text-white mb-3">Um presente para você!</h3>
-            <p class="text-gray-300 mb-6">Baixe o e-book gratuito "5 Lanches para Matar a Fome sem Culpa" e comece sua jornada agora mesmo.</p>
-            <form>
-                <input type="email" class="w-full p-3 mb-4 rounded-lg bg-dark-bg border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" placeholder="Digite seu melhor e-mail">
-                <button type="submit" class="w-full bg-hot-pink text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-hot-pink-dark transition-all duration-300 shadow-lg shadow-hot-pink">Baixar E-book!</button>
-            </form>
-        </div>
+  <!-- Header -->
+  <header id="header" class="bg-dark-bg/80 backdrop-blur-lg border-b border-dark-border/50 fixed w-full z-50 top-0 transition-all duration-300">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#home" class="text-2xl font-bold text-white font-poppins">Eduarda Tavares</a>
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#sobre" class="text-gray-300 hover:text-hot-pink transition">Sobre</a>
+        <a href="#servicos" class="text-gray-300 hover:text-hot-pink transition">Serviços</a>
+        <a href="#feedback" class="text-gray-300 hover:text-hot-pink transition">Depoimentos</a>
+        <a href="#agendar" class="text-hot-pink font-semibold">Agendar</a>
+      </nav>
+      <a href="#agendar" class="hidden md:block bg-hot-pink text-white font-semibold py-2 px-6 rounded-full hover:bg-hot-pink-dark transition-all duration-300 shadow-hot-pink">Agendar consulta</a>
+      <button id="mobile-menu-button" class="md:hidden text-white" aria-label="Abrir menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
     </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-t border-dark-border">
+      <a href="#sobre" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Sobre</a>
+      <a href="#servicos" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Serviços</a>
+      <a href="#feedback" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Depoimentos</a>
+      <a href="#agendar" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Agendar</a>
+      <div class="p-4">
+        <a href="#agendar" class="w-full text-center block bg-hot-pink text-white font-semibold py-3 px-6 rounded-full hover:bg-hot-pink-dark transition-all duration-300">Agendar consulta</a>
+      </div>
+    </div>
+  </header>
 
+  <main>
+    <!-- Hero -->
+    <section id="home" class="relative pt-36 pb-20 md:pt-48 md:pb-28 text-center animated-gradient-hero">
+      <div class="relative container mx-auto px-6 z-10">
+        <!-- LOGO CENTRALIZADA -->
+        <div class="mx-auto mb-8 md:mb-10 flex justify-center">
+          <!-- Troque o src abaixo pela sua logo real -->
+          <img src="https://placehold.co/200x200/1C1429/FF5D9E?text=LOGO" alt="Logo Eduarda Tavares" class="h-24 w-24 md:h-28 md:w-28 rounded-2xl border-2 border-dark-border/70 shadow-hot-pink" />
+        </div>
+        <h1 class="text-4xl md:text-6xl font-semibold text-white leading-tight mb-4">Emagrecer sem passar fome é possível</h1>
+        <p class="text-xl md:text-2xl gradient-text mb-6 font-poppins">Consulta focada em você, sem dietas malucas.</p>
+        <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">Atendimento online e presencial para transformar sua relação com a comida de forma leve e gentil.</p>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+          <a href="#agendar" class="w-full md:w-auto bg-hot-pink text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-hot-pink-dark transition-transform hover:scale-105 duration-300 shadow-lg shadow-hot-pink">Agendar consulta</a>
+          <a href="#sobre" class="w-full md:w-auto bg-dark-card text-white font-semibold py-4 px-8 rounded-full text-lg hover:bg-dark-border transition-transform hover:scale-105 duration-300 border border-dark-border">Saber mais</a>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        window.addEventListener('load', () => {
-            // This check ensures lucide is available before trying to use it.
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
+    <!-- Sobre -->
+    <section id="sobre" class="py-20 md:py-24 fade-in-element">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          <div class="md:w-1/2">
+            <img src="https://placehold.co/640x760/1C1429/FF5D9E?text=Eduarda+Tavares" alt="Foto profissional de Eduarda Tavares" class="rounded-2xl w-full object-cover border-4 border-dark-border/80" />
+          </div>
+          <div class="md:w-1/2 text-center md:text-left">
+            <h2 class="text-3xl md:text-4xl font-semibold text-white mb-6">Prazer, sou a <span class="text-lilac">Eduarda</span>.</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">Acredito que nutrição é sobre autocuidado, não sofrimento. Minha missão é te ajudar a encontrar o equilíbrio, resgatar o prazer de comer e alcançar seus objetivos de forma leve e sustentável.</p>
+            <p class="text-lg text-gray-300 mb-8 leading-relaxed">Chega de cardápios engessados. Vamos construir um plano que respeita seu corpo, seus gostos e sua rotina.</p>
+            <div class="bg-dark-card/70 p-6 rounded-xl border border-dark-border/70">
+              <h4 class="font-semibold text-lg text-lilac mb-3">Qualificações</h4>
+              <p class="text-gray-400 mb-1"><i data-lucide="award" class="inline-block w-5 h-5 mr-2 text-hot-pink"></i>Nutricionista - CRN-XX 12345</p>
+              <p class="text-gray-400 mb-1"><i data-lucide="award" class="inline-block w-5 h-5 mr-2 text-hot-pink"></i>Pós-graduação em Nutrição Clínica e Funcional</p>
+              <p class="text-gray-400"><i data-lucide="award" class="inline-block w-5 h-5 mr-2 text-hot-pink"></i>Especialista em Saúde Intestinal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            // Mobile Menu Toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
+    <!-- Serviços (sem guias/ebooks) -->
+    <section id="servicos" class="bg-dark-card py-20 md:py-24 fade-in-element">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-semibold text-white">Como posso te ajudar</h2>
+          <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Atendimentos 100% voltados ao agendamento de consultas.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div class="bg-dark-bg p-8 rounded-2xl text-center border border-dark-border glow-hover">
+            <i data-lucide="user-check" class="w-12 h-12 mx-auto mb-6 text-lilac"></i>
+            <h3 class="text-2xl font-semibold text-white mb-3">Consulta Inicial</h3>
+            <p class="text-gray-400 mb-6">Anamnese completa, metas realistas e primeiro plano alimentar personalizado.</p>
+            <a href="#agendar" class="font-semibold text-lilac hover:text-hot-pink">Agendar agora <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
+          </div>
+          <div class="bg-dark-bg p-8 rounded-2xl text-center border border-dark-border glow-hover">
+            <i data-lucide="refresh-ccw" class="w-12 h-12 mx-auto mb-6 text-lilac"></i>
+            <h3 class="text-2xl font-semibold text-white mb-3">Retorno</h3>
+            <p class="text-gray-400 mb-6">Ajustes finos, revisão de hábitos e evolução do plano conforme sua rotina.</p>
+            <a href="#agendar" class="font-semibold text-lilac hover:text-hot-pink">Agendar retorno <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
+          </div>
+          <div class="bg-dark-bg p-8 rounded-2xl text-center border border-dark-border glow-hover">
+            <i data-lucide="stethoscope" class="w-12 h-12 mx-auto mb-6 text-lilac"></i>
+            <h3 class="text-2xl font-semibold text-white mb-3">Acompanhamento</h3>
+            <p class="text-gray-400 mb-6">Pacote mensal com encontros e suporte entre consultas via WhatsApp.</p>
+            <a href="#agendar" class="font-semibold text-lilac hover:text-hot-pink">Ver horários <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                document.querySelectorAll('#mobile-menu a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
-            }
+    <!-- Depoimentos -->
+    <section id="feedback" class="py-20 md:py-24 fade-in-element">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-semibold text-white">O que minhas pacientes dizem</h2>
+          <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Resultados reais de mulheres que transformaram sua relação com a comida.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div class="bg-dark-card p-8 rounded-2xl border border-dark-border/80">
+            <div class="flex text-yellow-400 mb-4" aria-hidden="true">
+              <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
+            </div>
+            <p class="text-gray-300 mb-4 italic">“Perdi 8kg sem deixar de comer meu chocolate todo dia!”</p>
+            <p class="font-semibold text-lilac">Ana, 35</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-dark-card p-8 rounded-2xl border border-dark-border/80">
+            <div class="flex text-yellow-400 mb-4" aria-hidden="true">
+              <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
+            </div>
+            <p class="text-gray-300 mb-4 italic">“As consultas são uma terapia. Aprendi a comer com leveza.”</p>
+            <p class="font-semibold text-lilac">Mariana, 42</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-dark-card p-8 rounded-2xl border border-dark-border/80">
+            <div class="flex text-yellow-400 mb-4" aria-hidden="true">
+              <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
+            </div>
+            <p class="text-gray-300 mb-4 italic">“Meu intestino regulou e a energia voltou. Mudou minha rotina.”</p>
+            <p class="font-semibold text-lilac">Carla, 31</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Agendar (CTA principal) -->
+    <section id="agendar" class="bg-dark-card py-20 md:py-24 fade-in-element">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-semibold text-white">Agende sua consulta</h2>
+          <p class="text-lg text-gray-400 mt-3 max-w-2xl mx-auto">Escolha a melhor forma para você. Sem filas, sem burocracia.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <!-- Opção 1: WhatsApp -->
+          <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="group bg-dark-bg p-7 rounded-2xl border border-dark-border glow-hover flex flex-col items-start">
+            <div class="flex items-center mb-3">
+              <i data-lucide="message-circle" class="w-7 h-7 text-green-400 mr-3"></i>
+              <h3 class="text-xl font-semibold">WhatsApp</h3>
+            </div>
+            <p class="text-gray-400">Converse diretamente e confirme o melhor horário.</p>
+            <span class="mt-6 inline-flex items-center font-semibold text-lilac group-hover:text-hot-pink">Agendar pelo WhatsApp <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></span>
+          </a>
+          <!-- Opção 2: Formulário simples -->
+          <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border">
+            <div class="flex items-center mb-3">
+              <i data-lucide="calendar-check" class="w-7 h-7 text-hot-pink mr-3"></i>
+              <h3 class="text-xl font-semibold">Solicitar horário</h3>
+            </div>
+            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Mensagem enviada! Entrarei em contato para confirmar o horário.');">
+              <input type="text" required placeholder="Seu nome" class="w-full p-3 rounded-lg bg-dark-card border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" />
+              <input type="tel" required placeholder="WhatsApp (DDD + número)" class="w-full p-3 rounded-lg bg-dark-card border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" />
+              <input type="email" required placeholder="Seu e-mail" class="w-full p-3 rounded-lg bg-dark-card border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" />
+              <button type="submit" class="w-full bg-hot-pink text-white font-bold py-3 rounded-full hover:bg-hot-pink-dark transition-all duration-300 shadow-hot-pink">Solicitar agendamento</button>
+            </form>
+          </div>
+          <!-- Opção 3: Calendário externo (placeholder) -->
+          <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border flex flex-col">
+            <div class="flex items-center mb-3">
+              <i data-lucide="clock" class="w-7 h-7 text-lilac mr-3"></i>
+              <h3 class="text-xl font-semibold">Agenda online</h3>
+            </div>
+            <p class="text-gray-400 mb-4">Prefere escolher um horário agora? Use sua agenda online favorita.</p>
+            <a href="#" class="mt-auto inline-flex items-center justify-center bg-dark-card border border-dark-border px-4 py-3 rounded-lg hover:bg-dark-border">Embreve: Calendly / Doctoralia</a>
+          </div>
+        </div>
 
-            // Header scroll effect
-            const header = document.getElementById('header');
-            if(header) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 20) {
-                        header.classList.add('shadow-md');
-                    } else {
-                        header.classList.remove('shadow-md');
-                    }
-                });
-            }
+        <!-- Endereço/consultório -->
+        <div class="mt-14 grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border">
+            <h3 class="text-2xl font-semibold text-white mb-4">Consultório</h3>
+            <div class="flex items-start">
+              <i data-lucide="map-pin" class="w-6 h-6 mr-3 text-lilac mt-1"></i>
+              <div>
+                <p class="text-gray-300">Av. Paulista, 1234 - Sala 56</p>
+                <p class="text-gray-300">Bela Vista, São Paulo - SP</p>
+                <a href="#" class="text-lilac font-semibold hover:underline">Ver no mapa</a>
+              </div>
+            </div>
+          </div>
+          <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border">
+            <h3 class="text-2xl font-semibold text-white mb-4">Atendimento Online</h3>
+            <p class="text-gray-400">Consultas por videochamada com a mesma qualidade do presencial. Materiais por e-mail e suporte entre sessões.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-            // Popup Modal Logic
-            const popupModal = document.getElementById('popup-modal');
-            const openPopupBtn = document.getElementById('open-popup-btn');
-            const closePopupBtn = document.getElementById('close-popup-btn');
-            
-            if(popupModal && openPopupBtn && closePopupBtn) {
-                const popupContent = popupModal.querySelector('div');
+  <!-- Footer -->
+  <footer class="bg-dark-bg text-white border-t border-dark-border">
+    <div class="container mx-auto px-6 py-10 text-center">
+      <p class="font-semibold text-lg mb-4">Eduarda Tavares Nutrição</p>
+      <div class="flex justify-center space-x-6 mb-6">
+        <a href="#" class="text-gray-400 hover:text-hot-pink transition" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+        <a href="#" class="text-gray-400 hover:text-hot-pink transition" aria-label="Facebook"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+        <a href="#" class="text-gray-400 hover:text-hot-pink transition" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+      </div>
+      <p class="text-sm text-gray-500">&copy; 2025 Eduarda Tavares. Todos os direitos reservados.</p>
+      <p class="text-sm text-gray-500 mt-1">CRN-XX 12345</p>
+    </div>
+  </footer>
 
-                function showPopup() {
-                    popupModal.classList.remove('hidden');
-                    popupModal.classList.add('flex');
-                    setTimeout(() => {
-                         popupContent.classList.remove('scale-95');
-                    }, 50);
-                }
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg" aria-label="Agendar pelo WhatsApp">
+    <i data-lucide="message-circle" class="w-6 h-6"></i>
+  </a>
 
-                function hidePopup() {
-                    popupContent.classList.add('scale-95');
-                    setTimeout(() => {
-                        popupModal.classList.add('hidden');
-                        popupModal.classList.remove('flex');
-                    }, 300);
-                }
-                
-                openPopupBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showPopup();
-                });
-                
-                closePopupBtn.addEventListener('click', hidePopup);
-                
-                popupModal.addEventListener('click', (e) => {
-                    if (e.target === popupModal) {
-                        hidePopup();
-                    }
-                });
-                
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        hidePopup();
-                    }
-                });
-            }
+  <!-- Scripts -->
+  <script>
+    window.addEventListener('load', () => {
+      if (typeof lucide !== 'undefined') { lucide.createIcons(); }
 
-            // Intersection Observer for fade-in animations
-            const elements = document.querySelectorAll('.fade-in-element');
-            if("IntersectionObserver" in window) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                });
+      // Mobile menu
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+      }
 
-                elements.forEach(element => {
-                    observer.observe(element);
-                });
-            }
+      // Header shadow on scroll
+      const header = document.getElementById('header');
+      if (header) {
+        window.addEventListener('scroll', () => {
+          header.classList.toggle('shadow-md', window.scrollY > 20);
         });
-    </script>
+      }
+
+      // Intersection Observer for fade-ins
+      const elements = document.querySelectorAll('.fade-in-element');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); } });
+        }, { threshold: 0.1 });
+        elements.forEach(el => io.observe(el));
+      } else {
+        elements.forEach(el => el.classList.add('is-visible'));
+      }
+    });
+  </script>
 </body>
 </html>
