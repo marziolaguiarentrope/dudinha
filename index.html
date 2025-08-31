@@ -17,52 +17,20 @@
   <script defer src="https://cdn.jsdelivr.net/npm/lucide-static@latest/umd/lucide.js"></script>
 
   <style>
-    /* Fonts & Base */
-    body {
-      font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
-      background-color: #120C18;
-      color: #EAE6F0;
-    }
-    h1, h2, h3, h4, h5, h6, .font-poppins { font-family: 'Poppins', sans-serif; }
-
-    /* Palette */
+    body { font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans'; background-color: #120C18; color: #EAE6F0; }
+    h1,h2,h3,h4,h5,h6,.font-poppins { font-family: 'Poppins', sans-serif; }
     .bg-dark-bg { background-color: #120C18; }
     .bg-dark-card { background-color: #1C1429; }
     .border-dark-border { border-color: #3D325C; }
     .text-lilac { color: #C998FF; }
-    .bg-lilac { background-color: #C998FF; }
-    .text-hot-pink { color: #FF5D9E; }
     .bg-hot-pink { background-color: #FF5D9E; }
     .hover\:bg-hot-pink-dark:hover { background-color: #F83C8A; }
     .shadow-hot-pink { box-shadow: 0 0 20px rgba(255, 93, 158, 0.4); }
-
-    /* Hero gradient */
-    .animated-gradient-hero {
-      background: radial-gradient(1200px 600px at 50% -20%, rgba(255,93,158,.25), rgba(201,152,255,.12), rgba(18,12,24,0) 60%),
-                  linear-gradient(-45deg, #120C18, #3D325C, #FF5D9E, #1C1429);
-      background-size: 400% 400%;
-      animation: gradient 18s ease infinite;
-      position: relative;
-      overflow: hidden;
-    }
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Subtle card glow */
-    .glow-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(255,93,158,.12), 0 0 20px rgba(255, 93, 158, .18);
-      transition: all .3s ease;
-    }
-
-    /* Fade-in */
+    .animated-gradient-hero { background: radial-gradient(1200px 600px at 50% -20%, rgba(255,93,158,.25), rgba(201,152,255,.12), rgba(18,12,24,0) 60%), linear-gradient(-45deg, #120C18, #3D325C, #FF5D9E, #1C1429); background-size: 400% 400%; animation: gradient 18s ease infinite; position: relative; overflow: hidden; }
+    @keyframes gradient { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}}
+    .glow-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(255,93,158,.12), 0 0 20px rgba(255,93,158,.18); transition: all .3s ease; }
     .fade-in-element { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
     .fade-in-element.is-visible { opacity: 1; transform: translateY(0); }
-
-    /* Pretty gradient text */
     .gradient-text { background: linear-gradient(90deg, #FF5D9E, #C998FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
   </style>
 </head>
@@ -82,7 +50,6 @@
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-t border-dark-border">
       <a href="#sobre" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Sobre</a>
       <a href="#servicos" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Serviços</a>
@@ -98,16 +65,12 @@
     <!-- Hero -->
     <section id="home" class="relative pt-36 pb-20 md:pt-48 md:pb-28 text-center animated-gradient-hero">
       <div class="relative container mx-auto px-6 z-10">
-        <!-- LOGO CENTRALIZADA -->
         <div class="mx-auto mb-16 md:mb-20 flex justify-center">
-          <img src="NUTRICIONISTA.png" 
-               alt="Logo Eduarda Tavares" 
-               class="max-w-xs md:max-w-sm h-auto" />
+          <img src="NUTRICIONISTA.png" alt="Logo Eduarda Tavares" class="max-w-xs md:max-w-sm h-auto" />
         </div>
-
         <h1 class="text-4xl md:text-6xl font-semibold text-white leading-tight mb-8">Saúde é sobre equilíbrio, não restrição</h1>
         <p class="text-xl md:text-2xl gradient-text mb-6 font-poppins">Consulta focada em você, sem dietas malucas.</p>
-        <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">Atendimento online e presencial para transformar sua relação com a comida de forma leve e gentil.</p>
+        <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">Atendimento 100% online para transformar sua relação com a comida de forma leve e gentil.</p>
         <div class="flex flex-col md:flex-row justify-center items-center gap-4">
           <a href="#agendar" class="w-full md:w-auto bg-hot-pink text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-hot-pink-dark transition-transform hover:scale-105 duration-300 shadow-lg shadow-hot-pink">Agendar consulta</a>
           <a href="#sobre" class="w-full md:w-auto bg-dark-card text-white font-semibold py-4 px-8 rounded-full text-lg hover:bg-dark-border transition-transform hover:scale-105 duration-300 border border-dark-border">Saber mais</a>
@@ -126,23 +89,17 @@
             <h2 class="text-3xl md:text-4xl font-semibold text-white mb-6">Prazer, sou a <span class="text-lilac">Eduarda</span>.</h2>
             <p class="text-lg text-gray-300 mb-4 leading-relaxed">Acredito que nutrição é sobre autocuidado, não sofrimento. Minha missão é te ajudar a encontrar o equilíbrio, resgatar o prazer de comer e alcançar seus objetivos de forma leve e sustentável.</p>
             <p class="text-lg text-gray-300 mb-8 leading-relaxed">Chega de cardápios engessados. Vamos construir um plano que respeita seu corpo, seus gostos e sua rotina.</p>
-            <div class="bg-dark-card/70 p-6 rounded-xl border border-dark-border/70">
-              <h4 class="font-semibold text-lg text-lilac mb-3">Qualificações</h4>
-              <p class="text-gray-400 mb-1"><i data-lucide="award" class="inline-block w-5 h-5 mr-2 text-hot-pink"></i>Nutricionista - CRN-XX 12345</p>
-              <p class="text-gray-400 mb-1"><i data-lucide="award" class="inline-block w-5 h-5 mr-2 text-hot-pink"></i>Pós-graduação em Nutrição Clínica e Funcional</p>
-              <p class="text-gray-400"><i data-lucide="award" class="inline-block w-5 h-5 mr-2 text-hot-pink"></i>Especialista em Saúde Intestinal</p>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Serviços (sem guias/ebooks) -->
+    <!-- Serviços -->
     <section id="servicos" class="bg-dark-card py-20 md:py-24 fade-in-element">
       <div class="container mx-auto px-6">
         <div class="text-center mb-14">
           <h2 class="text-3xl md:text-4xl font-semibold text-white">Como posso te ajudar</h2>
-          <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Atendimentos 100% voltados ao agendamento de consultas.</p>
+          <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Atendimentos exclusivos via consulta online.</p>
         </div>
         <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div class="bg-dark-bg p-8 rounded-2xl text-center border border-dark-border glow-hover">
@@ -175,7 +132,6 @@
           <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Resultados reais de mulheres que transformaram sua relação com a comida.</p>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
-          <!-- Card 1 -->
           <div class="bg-dark-card p-8 rounded-2xl border border-dark-border/80">
             <div class="flex text-yellow-400 mb-4" aria-hidden="true">
               <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
@@ -183,7 +139,6 @@
             <p class="text-gray-300 mb-4 italic">“Perdi 8kg sem deixar de comer meu chocolate todo dia!”</p>
             <p class="font-semibold text-lilac">Ana, 35</p>
           </div>
-          <!-- Card 2 -->
           <div class="bg-dark-card p-8 rounded-2xl border border-dark-border/80">
             <div class="flex text-yellow-400 mb-4" aria-hidden="true">
               <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
@@ -191,7 +146,6 @@
             <p class="text-gray-300 mb-4 italic">“As consultas são uma terapia. Aprendi a comer com leveza.”</p>
             <p class="font-semibold text-lilac">Mariana, 42</p>
           </div>
-          <!-- Card 3 -->
           <div class="bg-dark-card p-8 rounded-2xl border border-dark-border/80">
             <div class="flex text-yellow-400 mb-4" aria-hidden="true">
               <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
@@ -203,20 +157,15 @@
       </div>
     </section>
 
-    <!-- Agendar (CTA principal) -->
+    <!-- Agendar -->
     <section id="agendar" class="bg-dark-card py-20 md:py-24 fade-in-element">
       <div class="container mx-auto px-6">
         <div class="text-center mb-10">
           <h2 class="text-3xl md:text-4xl font-semibold text-white">Agende sua consulta</h2>
-          <p class="text-lg text-gray-400 mt-3 max-w-2xl mx-auto">Escolha a melhor forma para você. Sem filas, sem burocracia.</p>
+          <p class="text-lg text-gray-400 mt-3 max-w-2xl mx-auto">Atendimento 100% online. Prático e sem burocracia.</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <!-- Opção 1: WhatsApp -->
-          <a href="https://wa.me/5516992251651?text=Ol%C3%A1%20gostaria%20de%20agendar%20uma%20consulta!" 
-             target="_blank" 
-             rel="noopener" 
-             class="group bg-dark-bg p-7 rounded-2xl border border-dark-border glow-hover flex flex-col items-start">
-
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <a href="https://wa.me/5516992251651?text=Ol%C3%A1%20gostaria%20de%20agendar%20uma%20consulta!" target="_blank" rel="noopener" class="group bg-dark-bg p-7 rounded-2xl border border-dark-border glow-hover flex flex-col items-start">
             <div class="flex items-center mb-3">
               <i data-lucide="message-circle" class="w-7 h-7 text-green-400 mr-3"></i>
               <h3 class="text-xl font-semibold">WhatsApp</h3>
@@ -224,7 +173,6 @@
             <p class="text-gray-400">Converse diretamente e confirme o melhor horário.</p>
             <span class="mt-6 inline-flex items-center font-semibold text-lilac group-hover:text-hot-pink">Agendar pelo WhatsApp <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></span>
           </a>
-          <!-- Opção 2: Formulário simples -->
           <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border">
             <div class="flex items-center mb-3">
               <i data-lucide="calendar-check" class="w-7 h-7 text-hot-pink mr-3"></i>
@@ -237,30 +185,8 @@
               <button type="submit" class="w-full bg-hot-pink text-white font-bold py-3 rounded-full hover:bg-hot-pink-dark transition-all duration-300 shadow-hot-pink">Solicitar agendamento</button>
             </form>
           </div>
-          <!-- Opção 3: Calendário externo (placeholder) -->
-          <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border flex flex-col">
-            <div class="flex items-center mb-3">
-              <i data-lucide="clock" class="w-7 h-7 text-lilac mr-3"></i>
-              <h3 class="text-xl font-semibold">Agenda online</h3>
-            </div>
-            <p class="text-gray-400 mb-4">Prefere escolher um horário agora? Use sua agenda online favorita.</p>
-            <a href="#" class="mt-auto inline-flex items-center justify-center bg-dark-card border border-dark-border px-4 py-3 rounded-lg hover:bg-dark-border">Embreve: Calendly / Doctoralia</a>
-          </div>
         </div>
-
-        <!-- Endereço/consultório -->
-        <div class="mt-14 grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border">
-            <h3 class="text-2xl font-semibold text-white mb-4">Consultório</h3>
-            <div class="flex items-start">
-              <i data-lucide="map-pin" class="w-6 h-6 mr-3 text-lilac mt-1"></i>
-              <div>
-                <p class="text-gray-300">Av. Paulista, 1234 - Sala 56</p>
-                <p class="text-gray-300">Bela Vista, São Paulo - SP</p>
-                <a href="#" class="text-lilac font-semibold hover:underline">Ver no mapa</a>
-              </div>
-            </div>
-          </div>
+        <div class="mt-14 max-w-3xl mx-auto">
           <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border">
             <h3 class="text-2xl font-semibold text-white mb-4">Atendimento Online</h3>
             <p class="text-gray-400">Consultas por videochamada com a mesma qualidade do presencial. Materiais por e-mail e suporte entre sessões.</p>
@@ -280,11 +206,11 @@
         <a href="#" class="text-gray-400 hover:text-hot-pink transition" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
       </div>
       <p class="text-sm text-gray-500">&copy; 2025 Eduarda Tavares. Todos os direitos reservados.</p>
-      <p class="text-sm text-gray-500 mt-1">CRN-XX 12345</p>
+      <p class="text-sm text-gray-500 mt-1">Atendimento 100% online • CRN-XX 12345</p>
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Button -->
+  <!-- Floating WhatsApp -->
   <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg" aria-label="Agendar pelo WhatsApp">
     <i data-lucide="message-circle" class="w-6 h-6"></i>
   </a>
@@ -293,24 +219,18 @@
   <script>
     window.addEventListener('load', () => {
       if (typeof lucide !== 'undefined') { lucide.createIcons(); }
-
-      // Mobile menu
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
       }
-
-      // Header shadow on scroll
       const header = document.getElementById('header');
       if (header) {
         window.addEventListener('scroll', () => {
           header.classList.toggle('shadow-md', window.scrollY > 20);
         });
       }
-
-      // Intersection Observer for fade-ins
       const elements = document.querySelectorAll('.fade-in-element');
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
