@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eduarda Tavares - Agende sua Consulta</title>
+  <title>Eduarda Tavares | Nutrição Esportiva & Combate</title>
+  <meta name="description" content="Nutricionista especializada em esportes de combate e alta performance. Atendimento presencial e online para emagrecimento, hipertrofia e performance.">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,236 +12,550 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Lucide Icons -->
-  <script defer src="https://cdn.jsdelivr.net/npm/lucide-static@latest/umd/lucide.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/umd/lucide.js"></script>
+
+  <!-- Custom Configuration for Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0f0a14',
+              card: '#16101f',
+              border: '#2a1f3d',
+              pink: '#FF5D9E',
+              lilac: '#C998FF',
+              purple: '#6d28d9',
+              accent: '#00F0FF'
+            }
+          },
+          fontFamily: {
+            sans: ['Nunito Sans', 'sans-serif'],
+            heading: ['Poppins', 'sans-serif'],
+            sport: ['Rajdhani', 'sans-serif'],
+          },
+          backgroundImage: {
+            'grid-pattern': "linear-gradient(to right, #2a1f3d 1px, transparent 1px), linear-gradient(to bottom, #2a1f3d 1px, transparent 1px)",
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
 
   <style>
-    body { font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans'; background-color: #120C18; color: #EAE6F0; }
-    h1,h2,h3,h4,h5,h6,.font-poppins { font-family: 'Poppins', sans-serif; }
-    .bg-dark-bg { background-color: #120C18; }
-    .bg-dark-card { background-color: #1C1429; }
-    .border-dark-border { border-color: #3D325C; }
-    .text-lilac { color: #C998FF; }
-    .bg-hot-pink { background-color: #FF5D9E; }
-    .hover\:bg-hot-pink-dark:hover { background-color: #F83C8A; }
-    .shadow-hot-pink { box-shadow: 0 0 20px rgba(255, 93, 158, 0.4); }
-    .animated-gradient-hero { background: radial-gradient(1200px 600px at 50% -20%, rgba(255,93,158,.25), rgba(201,152,255,.12), rgba(18,12,24,0) 60%), linear-gradient(-45deg, #120C18, #3D325C, #FF5D9E, #1C1429); background-size: 400% 400%; animation: gradient 18s ease infinite; position: relative; overflow: hidden; }
-    @keyframes gradient { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}}
-    .glow-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(255,93,158,.12), 0 0 20px rgba(255,93,158,.18); transition: all .3s ease; }
-    .fade-in-element { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
-    .fade-in-element.is-visible { opacity: 1; transform: translateY(0); }
-    .gradient-text { background: linear-gradient(90deg, #FF5D9E, #C998FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    body { background-color: #0f0a14; color: #EAE6F0; overflow-x: hidden; }
+    
+    /* Efeito de Grid no Fundo */
+    .bg-grid {
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, transparent, 10%, black, 90%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, 5%, black, 90%, transparent);
+      opacity: 0.15;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Animação do Gradiente Hero */
+    .animated-gradient-hero {
+      background: radial-gradient(circle at 50% 0%, rgba(201,152,255,0.15), rgba(15,10,20,0) 70%);
+      position: relative;
+    }
+    
+    /* Glow Effects */
+    .glow-text { text-shadow: 0 0 20px rgba(201,152,255, 0.5); }
+    
+    /* Scroll Reveal Animation Classes */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f0a14; }
+    ::-webkit-scrollbar-thumb { background: #2a1f3d; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #FF5D9E; }
+    
+    /* Glass Cards */
+    .glass-card {
+        background: rgba(22, 16, 31, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
   </style>
 </head>
-<body class="bg-dark-bg">
+<body class="bg-brand-dark antialiased selection:bg-brand-pink selection:text-white">
+
+  <!-- Background Noise/Grid -->
+  <div class="bg-grid-pattern bg-grid"></div>
+
   <!-- Header -->
-  <header id="header" class="bg-dark-bg/80 backdrop-blur-lg border-b border-dark-border/50 fixed w-full z-50 top-0 transition-all duration-300">
+  <header id="header" class="fixed w-full z-50 top-0 transition-all duration-300 border-b border-white/5 bg-brand-dark/80 backdrop-blur-md">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#home" class="text-2xl font-bold text-white font-poppins">Eduarda Tavares</a>
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="#sobre" class="text-gray-300 hover:text-hot-pink transition">Sobre</a>
-        <a href="#servicos" class="text-gray-300 hover:text-hot-pink transition">Serviços</a>
-        <a href="#feedback" class="text-gray-300 hover:text-hot-pink transition">Depoimentos</a>
-        <a href="#agendar" class="text-hot-pink font-semibold">Agendar</a>
+      <a href="#home" class="flex items-center gap-2 group z-50">
+        <!-- Logo Placeholder Icon -->
+        <div class="w-8 h-8 bg-gradient-to-tr from-brand-pink to-brand-lilac rounded-lg flex items-center justify-center text-white font-bold font-sport text-xl group-hover:shadow-[0_0_15px_rgba(255,93,158,0.6)] transition-all">E</div>
+        <span class="text-xl font-bold text-white font-heading tracking-tight">Eduarda <span class="text-brand-lilac">Tavares</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide uppercase font-heading">
+        <a href="#metodologia" class="text-gray-400 hover:text-brand-pink transition-colors hover:scale-105 duration-200">Metodologia</a>
+        <a href="#modalidades" class="text-gray-400 hover:text-brand-pink transition-colors hover:scale-105 duration-200">Especialidades</a>
+        <a href="#feedback" class="text-gray-400 hover:text-brand-pink transition-colors hover:scale-105 duration-200">Resultados</a>
       </nav>
-      <a href="#agendar" class="hidden md:block bg-hot-pink text-white font-semibold py-2 px-6 rounded-full hover:bg-hot-pink-dark transition-all duration-300 shadow-hot-pink">Agendar consulta</a>
-      <button id="mobile-menu-button" class="md:hidden text-white" aria-label="Abrir menu">
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="https://wa.me/5516992251651?text=Ol%C3%A1%20Eduarda,%20gostaria%20de%20saber%20mais%20sobre%20a%20consulta." target="_blank" class="bg-brand-pink text-white font-bold font-heading py-2.5 px-6 rounded-lg hover:bg-pink-600 transition-all duration-300 shadow-[0_0_20px_rgba(255,93,158,0.3)] hover:shadow-[0_0_30px_rgba(255,93,158,0.5)] transform hover:-translate-y-0.5">
+          Agendar Consulta
+        </a>
+      </div>
+
+      <!-- Mobile Button -->
+      <button id="mobile-menu-button" class="md:hidden text-white p-2 z-50 focus:outline-none" aria-label="Abrir menu">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-t border-dark-border">
-      <a href="#sobre" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Sobre</a>
-      <a href="#servicos" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Serviços</a>
-      <a href="#feedback" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Depoimentos</a>
-      <a href="#agendar" class="block py-3 px-6 text-gray-300 hover:bg-dark-border hover:text-hot-pink">Agendar</a>
-      <div class="p-4">
-        <a href="#agendar" class="w-full text-center block bg-hot-pink text-white font-semibold py-3 px-6 rounded-full hover:bg-hot-pink-dark transition-all duration-300">Agendar consulta</a>
-      </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 translate-x-full md:hidden">
+      <a href="#metodologia" class="mobile-link text-2xl font-heading font-bold text-white hover:text-brand-pink">Metodologia</a>
+      <a href="#modalidades" class="mobile-link text-2xl font-heading font-bold text-white hover:text-brand-pink">Especialidades</a>
+      <a href="#feedback" class="mobile-link text-2xl font-heading font-bold text-white hover:text-brand-pink">Resultados</a>
+      <a href="https://wa.me/5516992251651" class="bg-brand-pink text-white text-xl font-bold py-3 px-8 rounded-full shadow-lg hover:bg-pink-600 transition">Agendar Agora</a>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section id="home" class="relative pt-36 pb-20 md:pt-48 md:pb-28 text-center animated-gradient-hero">
-      <div class="relative container mx-auto px-6 z-10">
-        <div class="mx-auto mb-16 md:mb-20 flex justify-center">
-          <img src="NUTRICIONISTA.png" alt="Logo Eduarda Tavares" class="max-w-xs md:max-w-sm h-auto" />
+  <main class="relative z-10">
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 animated-gradient-hero overflow-hidden">
+      <!-- Decorative Blobs -->
+      <div class="absolute top-1/4 left-0 w-64 h-64 bg-brand-purple/20 rounded-full blur-[100px] pointer-events-none animate-pulse-slow"></div>
+      <div class="absolute bottom-0 right-0 w-80 h-80 bg-brand-pink/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow" style="animation-delay: 1s;"></div>
+
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm reveal border-l-4 border-l-brand-pink">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          <span class="text-xs md:text-sm font-bold uppercase tracking-widest text-gray-300 font-heading">Atendimento Presencial e Online</span>
         </div>
-        <h1 class="text-4xl md:text-6xl font-semibold text-white leading-tight mb-8">Saúde é sobre equilíbrio, não restrição</h1>
-        <p class="text-xl md:text-2xl gradient-text mb-6 font-poppins">Consulta focada em você, sem dietas malucas.</p>
-        <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">Atendimento 100% online para transformar sua relação com a comida de forma leve e gentil.</p>
-        <div class="flex flex-col md:flex-row justify-center items-center gap-4">
-          <a href="#agendar" class="w-full md:w-auto bg-hot-pink text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-hot-pink-dark transition-transform hover:scale-105 duration-300 shadow-lg shadow-hot-pink">Agendar consulta</a>
-          <a href="#sobre" class="w-full md:w-auto bg-dark-card text-white font-semibold py-4 px-8 rounded-full text-lg hover:bg-dark-border transition-transform hover:scale-105 duration-300 border border-dark-border">Saber mais</a>
+
+        <!-- Logo/Title Area -->
+        <div class="mb-6 flex justify-center reveal delay-100">
+           <!-- Placeholder para a Logo Grande -->
+           <img src="NUTRICIONISTA.png" onerror="this.style.display='none'" alt="Eduarda Tavares Nutrition" class="h-32 md:h-40 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" />
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-6 font-heading reveal delay-200">
+          Nutrição Esportiva &<br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-lilac glow-text">Alta Performance</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto font-sans leading-relaxed reveal delay-300">
+          Especializada em esportes de combate (Jiu-jitsu, Muay Thai, MMA) e atendimento para quem busca saúde e estética. 
+          Seja para bater o peso, ganhar massa ou emagrecer com qualidade, o plano é desenhado para a sua rotina.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 reveal delay-400">
+          <a href="#agendar" class="w-full sm:w-auto bg-brand-pink text-white font-bold font-heading py-4 px-10 rounded-lg hover:bg-pink-600 transition-all shadow-[0_0_20px_rgba(255,93,158,0.4)] text-lg hover:scale-105 duration-200">
+            Agendar Consulta
+          </a>
+          <a href="#metodologia" class="w-full sm:w-auto glass-card text-white font-bold font-heading py-4 px-10 rounded-lg hover:border-brand-lilac hover:text-brand-lilac transition-all text-lg hover:scale-105 duration-200">
+            Conhecer Método
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Sobre -->
-    <section id="sobre" class="py-20 md:py-24 fade-in-element">
+    <!-- Modalidades (Ticker / Grid) -->
+    <section id="modalidades" class="py-10 border-y border-white/5 bg-black/40 backdrop-blur-sm">
       <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-          <div class="md:w-1/2">
-            <img src="MO (2).png" alt="Foto profissional de Eduarda Tavares" class="rounded-2xl w-full object-cover border-4 border-dark-border/80" />
+        <p class="text-center text-sm text-gray-500 uppercase tracking-widest font-heading mb-8">Especialidades & Foco</p>
+        <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-80">
+          <!-- Items with hover color restoration -->
+          <div class="flex items-center gap-3 group transition-all duration-300 hover:opacity-100 hover:scale-110 cursor-default">
+            <i data-lucide="target" class="w-8 h-8 text-brand-lilac"></i>
+            <span class="text-xl font-bold font-sport text-white group-hover:text-brand-lilac transition">MUAY THAI</span>
           </div>
-          <div class="md:w-1/2 text-center md:text-left">
-            <h2 class="text-3xl md:text-4xl font-semibold text-white mb-6">Prazer, sou a <span class="text-lilac">Eduarda</span>.</h2>
-            <p class="text-lg text-gray-300 mb-4 leading-relaxed">Acredito que nutrição é sobre autocuidado, não sofrimento. Minha missão é te ajudar a encontrar o equilíbrio, resgatar o prazer de comer e alcançar seus objetivos de forma leve e sustentável.</p>
-            <p class="text-lg text-gray-300 mb-8 leading-relaxed">Chega de cardápios engessados. Vamos construir um plano que respeita seu corpo, seus gostos e sua rotina.</p>
+          <div class="flex items-center gap-3 group transition-all duration-300 hover:opacity-100 hover:scale-110 cursor-default">
+            <i data-lucide="swords" class="w-8 h-8 text-brand-lilac"></i>
+            <span class="text-xl font-bold font-sport text-white group-hover:text-brand-lilac transition">JIU-JITSU</span>
+          </div>
+           <div class="flex items-center gap-3 group transition-all duration-300 hover:opacity-100 hover:scale-110 cursor-default">
+            <i data-lucide="heart-pulse" class="w-8 h-8 text-brand-lilac"></i>
+            <span class="text-xl font-bold font-sport text-white group-hover:text-brand-lilac transition">SAÚDE & BEM-ESTAR</span>
+          </div>
+          <div class="flex items-center gap-3 group transition-all duration-300 hover:opacity-100 hover:scale-110 cursor-default">
+            <i data-lucide="dumbbell" class="w-8 h-8 text-brand-lilac"></i>
+            <span class="text-xl font-bold font-sport text-white group-hover:text-brand-lilac transition">HIPERTROFIA</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Serviços -->
-    <section id="servicos" class="bg-dark-card py-20 md:py-24 fade-in-element">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-14">
-          <h2 class="text-3xl md:text-4xl font-semibold text-white">Como posso te ajudar</h2>
-          <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Atendimentos exclusivos via consulta online.</p>
+    <!-- Sobre / Autoridade -->
+    <section class="py-24 relative overflow-hidden">
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+          <!-- Photo Side -->
+          <div class="lg:w-1/2 relative reveal group">
+            <!-- Moldura Decorativa Neon -->
+            <div class="absolute inset-0 border-2 border-brand-pink/30 rounded-2xl translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
+            
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                 <!-- Fallback image logic included via onerror -->
+                 <img src="MO (2).png" onerror="this.src='https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=2787&auto=format&fit=crop'" alt="Eduarda Tavares" class="w-full object-cover grayscale-[20%] group-hover:grayscale-0 transition duration-700 transform group-hover:scale-105" />
+                 <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent"></div>
+            </div>
+            
+            <!-- Badge Flutuante -->
+            <div class="absolute -bottom-6 -right-6 bg-brand-card p-4 rounded-xl border border-brand-border shadow-xl flex items-center gap-4 max-w-[250px] z-20">
+              <div class="bg-brand-pink/20 p-3 rounded-full text-brand-pink">
+                <i data-lucide="award" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase font-bold">Nutricionista</p>
+                <p class="text-white font-bold">CRN-3 91066/P</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Text Side -->
+          <div class="lg:w-1/2 reveal delay-200">
+            <h2 class="text-sm font-bold text-brand-pink uppercase tracking-widest mb-2 font-heading">Sobre a Especialista</h2>
+            <h3 class="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">Nutrição sem terrorismo,<br />focada no <span class="text-brand-lilac">seu objetivo</span>.</h3>
+            
+            <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
+              <p>
+                Meu nome é <strong class="text-white">Eduarda Tavares</strong>. Minha especialidade são os esportes de combate, onde a exigência física é máxima, mas aplico essa mesma ciência e disciplina para qualquer pessoa que queira transformar o corpo e a saúde.
+              </p>
+              <p>
+                Acredito que dieta não é sofrimento, é estratégia. Seja você um lutador de Muay Thai precisando bater o peso, ou alguém que quer apenas emagrecer e se sentir bem no espelho, o plano é personalizado para a <span class="text-brand-pink font-semibold">sua realidade</span>.
+              </p>
+            </div>
+
+            <div class="mt-8 grid grid-cols-2 gap-6">
+              <div class="glass-card p-4 rounded-lg border-l-4 border-l-brand-lilac">
+                <h4 class="text-white font-bold text-xl font-heading mb-1">Presencial & Online</h4>
+                <p class="text-sm text-gray-400">Atendimento flexível onde você estiver.</p>
+              </div>
+              <div class="glass-card p-4 rounded-lg border-l-4 border-l-brand-pink">
+                <h4 class="text-white font-bold text-xl font-heading mb-1">Performance</h4>
+                <p class="text-sm text-gray-400">Energia para treinar e resultados visíveis.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div class="bg-dark-bg p-8 rounded-2xl text-center border border-dark-border glow-hover">
-            <i data-lucide="user-check" class="w-12 h-12 mx-auto mb-6 text-lilac"></i>
-            <h3 class="text-2xl font-semibold text-white mb-3">Consulta Inicial</h3>
-            <p class="text-gray-400 mb-6">Anamnese completa, metas realistas e primeiro plano alimentar personalizado.</p>
-            <a href="#agendar" class="font-semibold text-lilac hover:text-hot-pink">Agendar agora <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
+      </div>
+    </section>
+
+    <!-- Metodologia (Processo) -->
+    <section id="metodologia" class="py-24 bg-brand-card relative overflow-hidden">
+      <!-- Background Texture -->
+      <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#4a4a4a 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Metodologia Exclusiva</h2>
+          <p class="text-gray-400 mt-4 max-w-xl mx-auto">Saia do básico. Entenda como construímos resultados consistentes.</p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6">
+          <!-- Passo 1 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-brand-lilac/50 transition duration-300 group reveal relative overflow-hidden">
+             <div class="absolute -right-4 -top-4 w-24 h-24 bg-brand-lilac/10 rounded-full blur-2xl group-hover:bg-brand-lilac/20 transition"></div>
+            <div class="text-5xl font-sport font-bold text-white/10 group-hover:text-brand-lilac/20 mb-4 transition">01</div>
+            <div class="mb-4 text-brand-lilac"><i data-lucide="clipboard-list" class="w-10 h-10"></i></div>
+            <h3 class="text-xl font-bold text-white mb-2">Diagnóstico Profundo</h3>
+            <p class="text-sm text-gray-400">Análise clínica detalhada de exames bioquímicos, rotina de sono, saúde intestinal e sinais clínicos. Não olhamos apenas calorias, mas como seu corpo funciona.</p>
           </div>
-          <div class="bg-dark-bg p-8 rounded-2xl text-center border border-dark-border glow-hover">
-            <i data-lucide="refresh-ccw" class="w-12 h-12 mx-auto mb-6 text-lilac"></i>
-            <h3 class="text-2xl font-semibold text-white mb-3">Retorno</h3>
-            <p class="text-gray-400 mb-6">Ajustes finos, revisão de hábitos e evolução do plano conforme sua rotina.</p>
-            <a href="#agendar" class="font-semibold text-lilac hover:text-hot-pink">Agendar retorno <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
+
+          <!-- Passo 2 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-brand-lilac/50 transition duration-300 group reveal delay-100 relative overflow-hidden">
+             <div class="absolute -right-4 -top-4 w-24 h-24 bg-brand-pink/10 rounded-full blur-2xl group-hover:bg-brand-pink/20 transition"></div>
+            <div class="text-5xl font-sport font-bold text-white/10 group-hover:text-brand-lilac/20 mb-4 transition">02</div>
+            <div class="mb-4 text-brand-lilac"><i data-lucide="utensils" class="w-10 h-10"></i></div>
+            <h3 class="text-xl font-bold text-white mb-2">Periodização Nutricional</h3>
+            <p class="text-sm text-gray-400">O cardápio muda com seu treino. Estratégias de ciclo de carboidratos e pré/pós-treino calculados para maximizar recuperação e performance.</p>
           </div>
-          <div class="bg-dark-bg p-8 rounded-2xl text-center border border-dark-border glow-hover">
-            <i data-lucide="stethoscope" class="w-12 h-12 mx-auto mb-6 text-lilac"></i>
-            <h3 class="text-2xl font-semibold text-white mb-3">Acompanhamento</h3>
-            <p class="text-gray-400 mb-6">Pacote mensal com encontros e suporte entre consultas via WhatsApp.</p>
-            <a href="#agendar" class="font-semibold text-lilac hover:text-hot-pink">Ver horários <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
+
+          <!-- Passo 3 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-brand-lilac/50 transition duration-300 group reveal delay-200 relative overflow-hidden">
+             <div class="absolute -right-4 -top-4 w-24 h-24 bg-brand-lilac/10 rounded-full blur-2xl group-hover:bg-brand-lilac/20 transition"></div>
+            <div class="text-5xl font-sport font-bold text-white/10 group-hover:text-brand-lilac/20 mb-4 transition">03</div>
+            <div class="mb-4 text-brand-lilac"><i data-lucide="trending-up" class="w-10 h-10"></i></div>
+            <h3 class="text-xl font-bold text-white mb-2">Estratégia de Jogo</h3>
+            <p class="text-sm text-gray-400">Seja bater o peso para lutar ou secar para o verão, definimos metas claras. Protocolos específicos de hidratação e suplementação inteligente.</p>
+          </div>
+
+          <!-- Passo 4 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-brand-lilac/50 transition duration-300 group reveal delay-300 relative overflow-hidden">
+             <div class="absolute -right-4 -top-4 w-24 h-24 bg-brand-pink/10 rounded-full blur-2xl group-hover:bg-brand-pink/20 transition"></div>
+            <div class="text-5xl font-sport font-bold text-white/10 group-hover:text-brand-lilac/20 mb-4 transition">04</div>
+            <div class="mb-4 text-brand-lilac"><i data-lucide="message-circle" class="w-10 h-10"></i></div>
+            <h3 class="text-xl font-bold text-white mb-2">Monitoramento Ativo</h3>
+            <p class="text-sm text-gray-400">Feedback constante via app. Ajustamos a rota sempre que necessário para garantir que você não estagne e continue evoluindo.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Depoimentos -->
-    <section id="feedback" class="py-20 md:py-24 fade-in-element">
+    <section id="feedback" class="py-24">
       <div class="container mx-auto px-6">
-        <div class="text-center mb-14">
-          <h2 class="text-3xl md:text-4xl font-semibold text-white">O que minhas pacientes dizem</h2>
-          <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Resultados reais de mulheres que transformaram sua relação com a comida.</p>
-        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-16 font-heading">Histórias Reais</h2>
+        
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-dark-card p-8 rounded-2xl border border-dark-border/80">
-            <div class="flex text-yellow-400 mb-4" aria-hidden="true">
-              <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
+          <!-- Card 1 -->
+          <div class="glass-card p-8 rounded-2xl relative hover:-translate-y-2 transition duration-300 reveal group">
+            <i data-lucide="quote" class="absolute top-6 right-6 text-brand-pink/20 w-10 h-10 group-hover:text-brand-pink/40 transition"></i>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 rounded-full bg-brand-border overflow-hidden flex items-center justify-center font-bold text-white text-xl">
+                 R
+              </div>
+              <div>
+                <p class="text-white font-bold">Ricardo M.</p>
+                <p class="text-xs text-brand-lilac uppercase font-bold">Jiu-Jitsu / Faixa Roxa</p>
+              </div>
             </div>
-            <p class="text-gray-300 mb-4 italic">“Perdi 8kg sem deixar de comer meu chocolate todo dia!”</p>
-            <p class="font-semibold text-lilac">Ana, 35</p>
+            <p class="text-gray-300 italic">"Sempre sofria para bater 76kg. Com a Eduarda, bati o peso comendo bem e cheguei no campeonato com gás de sobra. Foi minha melhor performance."</p>
+            <div class="mt-4 flex text-yellow-500 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
           </div>
-          <div class="bg-dark-card p-8 rounded-2xl border border-dark-border/80">
-            <div class="flex text-yellow-400 mb-4" aria-hidden="true">
-              <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
+
+          <!-- Card 2 -->
+          <div class="glass-card p-8 rounded-2xl relative hover:-translate-y-2 transition duration-300 reveal delay-100 group">
+            <i data-lucide="quote" class="absolute top-6 right-6 text-brand-pink/20 w-10 h-10 group-hover:text-brand-pink/40 transition"></i>
+            <div class="flex items-center gap-4 mb-6">
+               <div class="w-12 h-12 rounded-full bg-brand-border overflow-hidden flex items-center justify-center font-bold text-white text-xl">
+                 C
+              </div>
+              <div>
+                <p class="text-white font-bold">Camila S.</p>
+                <p class="text-xs text-brand-lilac uppercase font-bold">Praticante de Muay Thai</p>
+              </div>
             </div>
-            <p class="text-gray-300 mb-4 italic">“As consultas são uma terapia. Aprendi a comer com leveza.”</p>
-            <p class="font-semibold text-lilac">Mariana, 42</p>
+            <p class="text-gray-300 italic">"Meu foco era emagrecimento, mas sem perder força no treino de Muay Thai. O resultado veio rápido e o melhor: sem passar fome."</p>
+            <div class="mt-4 flex text-yellow-500 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
           </div>
-          <div class="bg-dark-card p-8 rounded-2xl border border-dark-border/80">
-            <div class="flex text-yellow-400 mb-4" aria-hidden="true">
-              <i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i><i data-lucide="star" class="fill-current"></i>
+
+          <!-- Card 3 -->
+          <div class="glass-card p-8 rounded-2xl relative hover:-translate-y-2 transition duration-300 reveal delay-200 group">
+            <i data-lucide="quote" class="absolute top-6 right-6 text-brand-pink/20 w-10 h-10 group-hover:text-brand-pink/40 transition"></i>
+            <div class="flex items-center gap-4 mb-6">
+               <div class="w-12 h-12 rounded-full bg-brand-border overflow-hidden flex items-center justify-center font-bold text-white text-xl">
+                 L
+              </div>
+              <div>
+                <p class="text-white font-bold">Larissa F.</p>
+                <p class="text-xs text-brand-lilac uppercase font-bold">Estilo de Vida</p>
+              </div>
             </div>
-            <p class="text-gray-300 mb-4 italic">“Meu intestino regulou e a energia voltou. Mudou minha rotina.”</p>
-            <p class="font-semibold text-lilac">Carla, 31</p>
+            <p class="text-gray-300 italic">"Nunca lutei, mas procurei a Eduarda pela abordagem esportiva. Mudei minha composição corporal e aprendi a comer melhor."</p>
+            <div class="mt-4 flex text-yellow-500 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Agendar -->
-    <section id="agendar" class="bg-dark-card py-20 md:py-24 fade-in-element">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-10">
-          <h2 class="text-3xl md:text-4xl font-semibold text-white">Agende sua consulta</h2>
-          <p class="text-lg text-gray-400 mt-3 max-w-2xl mx-auto">Atendimento 100% online. Prático e sem burocracia.</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <a href="https://wa.me/5516992251651?text=Ol%C3%A1%20gostaria%20de%20agendar%20uma%20consulta!" target="_blank" rel="noopener" class="group bg-dark-bg p-7 rounded-2xl border border-dark-border glow-hover flex flex-col items-start">
-            <div class="flex items-center mb-3">
-              <i data-lucide="message-circle" class="w-7 h-7 text-green-400 mr-3"></i>
-              <h3 class="text-xl font-semibold">WhatsApp</h3>
+    <!-- FAQ Section (Novo) -->
+    <section id="faq" class="py-24 bg-brand-card/30">
+      <div class="container mx-auto px-6 max-w-3xl">
+        <h2 class="text-3xl font-bold text-white text-center mb-10 font-heading">Dúvidas Frequentes</h2>
+        
+        <div class="space-y-4 reveal">
+          <!-- Pergunta 1 -->
+          <div class="glass-card rounded-lg overflow-hidden transition-all duration-300 hover:border-brand-pink/50">
+            <button class="w-full p-6 text-left flex justify-between items-center transition focus:outline-none" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-lg">Não sou atleta, posso me consultar?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-brand-pink transition-transform duration-300"></i>
+            </button>
+            <div class="hidden p-6 pt-0 text-gray-400 border-t border-white/5 mt-2">
+              <p class="mt-4">Com certeza! A metodologia esportiva é excelente para quem busca emagrecimento, definição muscular ou apenas melhorar a qualidade de vida, mesmo que você treine apenas por hobby ou musculação.</p>
             </div>
-            <p class="text-gray-400">Converse diretamente e confirme o melhor horário.</p>
-            <span class="mt-6 inline-flex items-center font-semibold text-lilac group-hover:text-hot-pink">Agendar pelo WhatsApp <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></span>
+          </div>
+
+          <!-- Pergunta 2 -->
+          <div class="glass-card rounded-lg overflow-hidden transition-all duration-300 hover:border-brand-pink/50">
+            <button class="w-full p-6 text-left flex justify-between items-center transition focus:outline-none" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-lg">Como funciona o atendimento presencial e online?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-brand-pink transition-transform duration-300"></i>
+            </button>
+            <div class="hidden p-6 pt-0 text-gray-400 border-t border-white/5 mt-2">
+              <p class="mt-4">O atendimento online é via videochamada, com a mesma qualidade e entrega de materiais. O presencial inclui avaliação física com bioimpedância e dobras cutâneas no consultório.</p>
+            </div>
+          </div>
+
+          <!-- Pergunta 3 -->
+          <div class="glass-card rounded-lg overflow-hidden transition-all duration-300 hover:border-brand-pink/50">
+            <button class="w-full p-6 text-left flex justify-between items-center transition focus:outline-none" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-lg">Você faz cardápio para Muay Thai?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-brand-pink transition-transform duration-300"></i>
+            </button>
+            <div class="hidden p-6 pt-0 text-gray-400 border-t border-white/5 mt-2">
+              <p class="mt-4">Sim! O Muay Thai exige muita energia e recuperação rápida. Ajustamos os carboidratos e proteínas nos horários certos para que você não sinta fraqueza no treino e evolua na técnica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agendamento CTA -->
+    <section id="agendar" class="py-24 relative overflow-hidden">
+      <!-- Glow effect background -->
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-dark to-brand-card z-0"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-pink/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">Vamos alcançar seu objetivo?</h2>
+        <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Não deixe para depois. Transforme seu corpo e sua performance com uma nutrição inteligente.</p>
+        
+        <div class="flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto">
+          <a href="https://wa.me/5516992251651?text=Ol%C3%A1%20Eduarda!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="group relative bg-brand-pink hover:bg-pink-600 text-white p-1 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,93,158,0.4)]">
+             <div class="bg-white/10 border border-white/20 h-full w-full rounded-xl px-10 py-6 flex items-center justify-center gap-4">
+                <i data-lucide="message-circle" class="w-8 h-8 text-white"></i>
+                <div class="text-left">
+                  <p class="text-xs uppercase font-bold tracking-wider opacity-90">Atendimento Rápido</p>
+                  <p class="text-2xl font-bold font-heading">Agendar via WhatsApp</p>
+                </div>
+             </div>
           </a>
-          <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border">
-            <div class="flex items-center mb-3">
-              <i data-lucide="calendar-check" class="w-7 h-7 text-hot-pink mr-3"></i>
-              <h3 class="text-xl font-semibold">Solicitar horário</h3>
-            </div>
-            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Mensagem enviada! Entrarei em contato para confirmar o horário.');">
-              <input type="text" required placeholder="Seu nome" class="w-full p-3 rounded-lg bg-dark-card border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" />
-              <input type="tel" required placeholder="WhatsApp (DDD + número)" class="w-full p-3 rounded-lg bg-dark-card border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" />
-              <input type="email" required placeholder="Seu e-mail" class="w-full p-3 rounded-lg bg-dark-card border border-dark-border focus:outline-none focus:ring-2 focus:ring-hot-pink text-white" />
-              <button type="submit" class="w-full bg-hot-pink text-white font-bold py-3 rounded-full hover:bg-hot-pink-dark transition-all duration-300 shadow-hot-pink">Solicitar agendamento</button>
-            </form>
-          </div>
         </div>
-        <div class="mt-14 max-w-3xl mx-auto">
-          <div class="bg-dark-bg p-7 rounded-2xl border border-dark-border">
-            <h3 class="text-2xl font-semibold text-white mb-4">Atendimento Online</h3>
-            <p class="text-gray-400">Consultas por videochamada com a mesma qualidade do presencial. Materiais por e-mail e suporte entre sessões.</p>
-          </div>
-        </div>
+        
+        <p class="mt-8 text-sm text-gray-500 flex items-center justify-center gap-2">
+          <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Atendimento Online (Global) e Presencial.
+        </p>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-dark-bg text-white border-t border-dark-border">
-    <div class="container mx-auto px-6 py-10 text-center">
-      <p class="font-semibold text-lg mb-4">Eduarda Tavares Nutrição</p>
-      <div class="flex justify-center space-x-6 mb-6">
-        <a href="#" class="text-gray-400 hover:text-hot-pink transition" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-        <a href="#" class="text-gray-400 hover:text-hot-pink transition" aria-label="Facebook"><i data-lucide="facebook" class="w-6 h-6"></i></a>
-        <a href="#" class="text-gray-400 hover:text-hot-pink transition" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+  <footer class="bg-[#050308] border-t border-brand-border pt-16 pb-8 text-sm relative z-10">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div class="col-span-1 md:col-span-2">
+          <a href="#home" class="text-2xl font-bold text-white mb-4 font-heading block">Eduarda Tavares</a>
+          <p class="text-gray-400 max-w-xs mb-6">Nutrição esportiva baseada em ciência e prática. Especialista em esportes de combate, emagrecimento e alta performance.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-brand-pink hover:scale-110 transition duration-300"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-blue-600 hover:scale-110 transition duration-300"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Serviços</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-brand-lilac transition">Consultoria Online</a></li>
+            <li><a href="#" class="hover:text-brand-lilac transition">Presencial</a></li>
+            <li><a href="#" class="hover:text-brand-lilac transition">Emagrecimento</a></li>
+            <li><a href="#" class="hover:text-brand-lilac transition">Nutrição Esportiva</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-4 uppercase tracking-wider">Contato</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-brand-pink"></i> contato@eduardatavares.com</li>
+            <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-brand-pink"></i> São Paulo / Online</li>
+            <li class="mt-4 text-brand-pink font-semibold border border-brand-pink/30 inline-block px-3 py-1 rounded bg-brand-pink/10">CRN-3 91066/P</li>
+          </ul>
+        </div>
       </div>
-      <p class="text-sm text-gray-500">&copy; 2025 Eduarda Tavares. Todos os direitos reservados.</p>
-      <p class="text-sm text-gray-500 mt-1">Atendimento 100% online • CRN-3 91066/P</p>
+      
+      <div class="border-t border-white/5 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Eduarda Tavares Nutrição. Todos os direitos reservados.</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg" aria-label="Agendar pelo WhatsApp">
-    <i data-lucide="message-circle" class="w-6 h-6"></i>
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5516992251651" target="_blank" class="fixed bottom-6 right-6 z-50 group">
+    <span class="absolute right-16 top-2 bg-white text-black text-xs font-bold py-1 px-3 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+      Agendar Consulta
+    </span>
+    <div class="bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:scale-110 transition-transform duration-300 hover:rotate-12">
+      <i data-lucide="message-circle" class="w-7 h-7 text-white fill-current"></i>
+    </div>
   </a>
 
   <!-- Scripts -->
   <script>
-    window.addEventListener('load', () => {
-      if (typeof lucide !== 'undefined') { lucide.createIcons(); }
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-      }
-      const header = document.getElementById('header');
-      if (header) {
-        window.addEventListener('scroll', () => {
-          header.classList.toggle('shadow-md', window.scrollY > 20);
-        });
-      }
-      const elements = document.querySelectorAll('.fade-in-element');
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); } });
-        }, { threshold: 0.1 });
-        elements.forEach(el => io.observe(el));
+    window.addEventListener('load', function() {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileMenuButton.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('translate-x-full');
+      if (isHidden) {
+          mobileMenu.classList.remove('translate-x-full');
+          mobileMenuButton.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+          if (typeof lucide !== 'undefined') lucide.createIcons();
       } else {
-        elements.forEach(el => el.classList.add('is-visible'));
+          mobileMenu.classList.add('translate-x-full');
+          mobileMenuButton.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+          if (typeof lucide !== 'undefined') lucide.createIcons();
       }
     });
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenuButton.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    });
+
+    // Sticky Header Effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('shadow-lg', 'bg-brand-dark/95');
+      } else {
+        header.classList.remove('shadow-lg', 'bg-brand-dark/80');
+      }
+    });
+
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // FAQ Accordion Function
+    function toggleFaq(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      
+      content.classList.toggle('hidden');
+      
+      if (content.classList.contains('hidden')) {
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
   </script>
 </body>
 </html>
